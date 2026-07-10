@@ -8,15 +8,20 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
-    "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+    "version": 5,
+    "copyright": [
+      "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system6-6K",
     "roms": [
       "flash_l1",
       "flash_l1ff",
       "flash_t1",
-      "flash_t1ff"
+      "flash_t1ff",
+      "flashgdp",
+      "flashgp2"
     ]
   },
   "game_state": {
@@ -124,20 +129,6 @@
       "length": 2,
       "encoding": "bool",
       "invert": true
-    }
-  },
-  "player_state": {
-    "_notes": "yet to be decoded",
-    "_offsets": [
-      0,
-      18,
-      36,
-      54
-    ],
-    "raw": {
-      "start": "0x94",
-      "length": 18,
-      "encoding": "raw"
     }
   },
   "high_scores": [

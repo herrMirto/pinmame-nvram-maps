@@ -8,15 +8,133 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "copyright": [
-      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "stern-m200",
     "roms": [
-      "flight2m"
+      "flight2m",
+      "flight2mb"
     ]
+  },
+  "game_state": {
+    "_notes": [
+      "`final_scores` only updated at end of each ball; `scores` represents display memory"
+    ],
+    "credits": {
+      "label": "Credits",
+      "encoding": "bcd",
+      "start": "0x2CE"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x000",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 2",
+        "start": "0x004",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 3",
+        "start": "0x008",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 4",
+        "start": "0x00C",
+        "length": 4,
+        "encoding": "bcd"
+      }
+    ],
+    "final_scores": [
+      {
+        "label": "Player 1",
+        "start": "0x280",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 2",
+        "start": "0x291",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 3",
+        "start": "0x2A2",
+        "length": 4,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 4",
+        "start": "0x2B3",
+        "length": 4,
+        "encoding": "bcd"
+      }
+    ],
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x37",
+      "encoding": "bcd"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "encoding": "dipsw",
+      "offsets": [
+        7
+      ],
+      "values": [
+        3,
+        5
+      ]
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x38",
+      "encoding": "bcd"
+    },
+    "player_count": {
+      "label": "Players",
+      "start": "0x2EB",
+      "encoding": "bcd"
+    },
+    "game_over": {
+      "_notes": "reading 'game over' lamp",
+      "label": "Game Over",
+      "start": "0x1F",
+      "encoding": "bool",
+      "mask": "0x04"
+    },
+    "tilted": {
+      "_notes": "reading 'tilt' lamp",
+      "label": "Tilted",
+      "start": "0x1F",
+      "encoding": "bool",
+      "mask": "0x08"
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "encoding": "dipsw",
+      "offsets": [
+        19,
+        18
+      ],
+      "values": [
+        10,
+        15,
+        25,
+        40
+      ]
+    }
   },
   "high_scores": [
     {

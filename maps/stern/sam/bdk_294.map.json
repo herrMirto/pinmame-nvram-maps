@@ -1,12 +1,73 @@
 {
+  "_notes": [
+    "Batman: The Dark Knight 2.90/2.94 Stern SAM revisions.",
+    "Live headless PinMAME exercise verified Player 1 at 0x021109F0 and Player 2 at 0x021109F8 after a four-player start and simulated drain. Player 3/4 follow the confirmed eight-byte Stern SAM layout.",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 2,
+    "version": 7,
     "license": "GNU Lesser General Public License v3.0",
     "platform": "stern-sam",
     "roms": [
-      "bdk_294"
+      "bdk_294",
+      "bdk_290"
+    ],
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x021109F0",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x021109F8",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x02110A00",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x02110A08",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x02110905",
+      "encoding": "bool",
+      "mask": "0x40"
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
   },
   "high_scores": [
     {

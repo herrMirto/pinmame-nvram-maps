@@ -4,11 +4,14 @@
     "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions",
     "CPU address = 0x30000000 + even_index * 2",
     "High scores stored as score/10 (scale: 10)",
-    "Small scores (regular, elite, weak kidney) stored as integers with scale 1"
+    "Small scores (regular, elite, weak kidney) stored as integers with scale 1",
+    "The BBB 1.9 ROM's game-over path reads each full 32-bit score from player structures based at 0x00061F1C (0x70-byte stride), offset +0x16: 0x00061F32, 0x00061FA2, 0x00062012, 0x00062082. The same values are passed to the decimal formatter and final-score NVRAM writer.",
+    "These logical MC68306 addresses require a bus-correct PinmameReadMainCPUByte implementation using cpunum_read_byte(); the former memory_get_read_ptr() implementation returned raw host-layout bytes and produced patterned garbage.",
+    "Recent-game scores are verified persistent NVRAM values stored as score/10."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
       "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
@@ -23,122 +26,43 @@
     "scores": [
       {
         "label": "Player 1",
-        "offsets": [
-          "0x3000020E",
-          "0x30000210",
-          "0x30000212",
-          "0x30000214"
-        ],
+        "start": "0x00061F32",
         "encoding": "int",
-        "endian": "big"
-      },
-      {
-        "label": "Player 2",
-        "offsets": [
-          "0x30000216",
-          "0x30000218",
-          "0x3000021A",
-          "0x3000021C"
-        ],
-        "encoding": "int",
-        "endian": "big"
+        "endian": "big",
+        "length": 4,
+        "_notes": [
+          "Verified by real play (two 1-player games recorded 8,033,170 and 110,318,580 live). Players 2-4 were removed: their addresses were an unverified +0x70 stride guess and read uninitialized DRAM garbage during a real 1-player game."
+        ]
       }
     ],
-    "credits": {
-      "label": "Credits",
-      "offsets": [
-        "0x30000200"
-      ],
-      "encoding": "int"
-    },
-    "free_play": {
-      "label": "Free Play",
-      "offsets": [
-        "0x30000202"
-      ],
-      "encoding": "bool"
-    },
-    "ball_count": {
-      "label": "Ball Count",
-      "offsets": [
-        "0x30000204"
-      ],
-      "encoding": "int"
-    },
-    "current_player": {
-      "label": "Current Player",
-      "offsets": [
-        "0x30000206"
-      ],
-      "encoding": "int"
-    },
-    "tilted": {
-      "label": "Tilted",
-      "offsets": [
-        "0x30000208"
-      ],
-      "encoding": "bool"
-    },
-    "current_ball": {
-      "label": "Current Ball",
-      "offsets": [
-        "0x3000020A"
-      ],
-      "encoding": "int"
-    },
-    "player_count": {
-      "label": "Player Count",
-      "offsets": [
-        "0x3000020C"
-      ],
-      "encoding": "int"
-    },
-    "game_over": {
-      "label": "Game Over",
-      "offsets": [
-        "0x30000206"
-      ],
-      "encoding": "bool",
-      "invert": true
-    },
-    "recent_scores": [
+    "final_scores": [
       {
-        "label": "Recent Game 1",
+        "label": "Final Score",
+        "_notes": [
+          "Recent-games ring buffer in DRAM: slot 1 holds the most recently COMPLETED game's final score. At game over the finished game is pushed here and older games shift down to 0x2066/0x206E/0x2076. Even-offset big-endian x10, same layout as the high-score table. Verified on bbb109: a 9,355,020 game read back exactly here. This is the final score at game over, NOT the live in-play score (that lives in higher CPU work RAM)."
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "length": 4,
         "offsets": [
           "0x3000205E",
           "0x30002060",
           "0x30002062",
           "0x30002064"
-        ],
-        "encoding": "int",
-        "endian": "big",
-        "scale": 10
-      },
-      {
-        "label": "Recent Game 2",
-        "offsets": [
-          "0x30002066",
-          "0x30002068",
-          "0x3000206A",
-          "0x3000206C"
-        ],
-        "encoding": "int",
-        "endian": "big",
-        "scale": 10
-      },
-      {
-        "label": "Recent Game 3",
-        "offsets": [
-          "0x3000206E",
-          "0x30002070",
-          "0x30002072",
-          "0x30002074"
-        ],
-        "encoding": "int",
-        "endian": "big",
-        "scale": 10
+        ]
       }
-    ]
+    ],
+    "game_over": {
+      "_notes": [
+        "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."
+      ],
+      "label": "Game Over",
+      "start": "0x000012F2",
+      "encoding": "bool",
+      "mask": "0x40",
+      "invert": true
+    }
   },
   "high_scores": [
     {
@@ -391,276 +315,6 @@
         "endian": "big",
         "length": 4,
         "scale": 10
-      }
-    },
-    {
-      "label": "Big Bang Regulars #1",
-      "initials": {
-        "offsets": [
-          "0x30000190",
-          "0x30000192",
-          "0x30000194"
-        ],
-        "encoding": "ch",
-        "length": 3
-      }
-    },
-    {
-      "label": "Big Bang Regulars #2",
-      "initials": {
-        "offsets": [
-          "0x30000198",
-          "0x3000019A",
-          "0x3000019C"
-        ],
-        "encoding": "ch",
-        "length": 3
-      }
-    },
-    {
-      "label": "Big Bang Regulars #3",
-      "initials": {
-        "offsets": [
-          "0x300001A0",
-          "0x300001A2",
-          "0x300001A4"
-        ],
-        "encoding": "ch",
-        "length": 3
-      }
-    },
-    {
-      "label": "Big Bang Regulars #4",
-      "initials": {
-        "offsets": [
-          "0x300001A8",
-          "0x300001AA",
-          "0x300001AC"
-        ],
-        "encoding": "ch",
-        "length": 3
-      }
-    },
-    {
-      "label": "Big Bang Regulars #5",
-      "initials": {
-        "offsets": [
-          "0x300001B0",
-          "0x300001B2",
-          "0x300001B4"
-        ],
-        "encoding": "ch",
-        "length": 3
-      }
-    },
-    {
-      "label": "Underground Elite #1",
-      "initials": {
-        "offsets": [
-          "0x300002DE",
-          "0x300002E0",
-          "0x300002E2"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300002BC"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Underground Elite #2",
-      "initials": {
-        "offsets": [
-          "0x300002E6",
-          "0x300002E8",
-          "0x300002EA"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300002C4"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Underground Elite #3",
-      "initials": {
-        "offsets": [
-          "0x300002EE",
-          "0x300002F0",
-          "0x300002F2"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300002CC"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Underground Elite #4",
-      "initials": {
-        "offsets": [
-          "0x300002F6",
-          "0x300002F8",
-          "0x300002FA"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300002D4"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Underground Elite #5",
-      "initials": {
-        "offsets": [
-          "0x300002FE",
-          "0x30000300",
-          "0x30000302"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300002DC"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Weak Kidney Club #1",
-      "initials": {
-        "offsets": [
-          "0x300018C2",
-          "0x300018C4",
-          "0x300018C6"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300018A0"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Weak Kidney Club #2",
-      "initials": {
-        "offsets": [
-          "0x300018CA",
-          "0x300018CC",
-          "0x300018CE"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300018A8"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Weak Kidney Club #3",
-      "initials": {
-        "offsets": [
-          "0x300018D2",
-          "0x300018D4",
-          "0x300018D6"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300018B0"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Weak Kidney Club #4",
-      "initials": {
-        "offsets": [
-          "0x300018DA",
-          "0x300018DC",
-          "0x300018DE"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300018B8"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
-      }
-    },
-    {
-      "label": "Weak Kidney Club #5",
-      "initials": {
-        "offsets": [
-          "0x300018E2",
-          "0x300018E4",
-          "0x300018E6"
-        ],
-        "encoding": "ch",
-        "length": 3
-      },
-      "score": {
-        "offsets": [
-          "0x300018C0"
-        ],
-        "encoding": "int",
-        "endian": "little",
-        "length": 2,
-        "scale": 1
       }
     }
   ]

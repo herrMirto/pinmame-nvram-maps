@@ -1,12 +1,71 @@
 {
-  "_fileformat": 0.7,
+  "_notes": [
+    "Live game state verified against labeled AC/DC LE 1.70 NVRAM captures.",
+    "Player 1 score progressed to the observed final score of 1844160 at 0x02110A24.",
+    "Player count is active-game state and resets to zero at game over.",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ],
+  "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 9,
     "license": "GNU Lesser General Public License v3.0",
     "platform": "stern-sam",
     "roms": [
-      "acd_170h"
+      "acd_170h",
+      "acd_170hc"
+    ],
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x02110A24",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x02110A2C",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x02110A34",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x02110A3C",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x02111054",
+      "encoding": "int",
+      "length": 4
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x021118AA",
+      "encoding": "bool",
+      "length": 1
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
   },
   "high_scores": [
     {
@@ -89,7 +148,7 @@
         "null": "terminate",
         "length": 11
       },
-      "counter": {
+      "score": {
         "start": "0x021038C8",
         "encoding": "int",
         "length": 4

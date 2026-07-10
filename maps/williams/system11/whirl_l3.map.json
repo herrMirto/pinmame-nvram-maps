@@ -6,20 +6,21 @@
     "Williams System 11B",
     "2022-12     : added _char_map for mapping intials (Tom Collins)",
     "2025-03 v0.2: Tom Collins added audits",
-    "2025-09 v0.4: Tom Collins added to game_state",
-    "2026-04 v5  : Tom Collins fixed game_state"
+    "2025-09 v0.4: Tom Collins added to game_state"
   ],
   "_fileformat": 0.8,
   "_metadata": {
     "version": 5,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
-      "whirl_l3"
+      "whirl_l3",
+      "whirl_l2"
     ],
     "char_map": " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   },
@@ -78,7 +79,7 @@
     "player_count": {
       "label": "Player Count",
       "short_label": "Players",
-      "start": 166,
+      "start": 157,
       "encoding": "int",
       "offset": 1,
       "special_values": {
@@ -88,28 +89,28 @@
     "current_player": {
       "label": "Current Player",
       "short_label": "P#",
-      "start": 167,
+      "start": 158,
       "encoding": "int",
       "offset": 1
     },
     "tilted": {
       "label": "Tilted",
-      "start": 162,
+      "start": 153,
       "encoding": "bool"
     },
     "game_over": {
       "label": "Game Over",
-      "start": 163,
+      "start": 154,
       "encoding": "bool"
     },
     "extra_balls": {
       "label": "Extra Balls",
-      "start": 170,
+      "start": 161,
       "encoding": "int"
     },
     "tilt_warnings": {
       "label": "Tilt Warnings",
-      "start": 173,
+      "start": 164,
       "encoding": "int"
     },
     "free_play": {

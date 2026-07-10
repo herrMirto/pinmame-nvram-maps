@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2018 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -16,7 +16,10 @@
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
-      "tsptr_l3"
+      "tsptr_l3",
+      "tsptr_l3fj",
+      "tsptr_lx4",
+      "tsptr_lx4b"
     ]
   },
   "game_state": {
@@ -95,31 +98,6 @@
         0,
         0,
         1
-      ]
-    },
-    "xcel_value": {
-      "label": "X-Cellerator Value",
-      "_notes": "extracting value from lamp matrix col 6-7",
-      "start": 21,
-      "length": 2,
-      "encoding": "bits",
-      "values": [
-        10000,
-        10000,
-        100000,
-        100000,
-        100000,
-        100000,
-        500000,
-        0,
-        10000,
-        10000,
-        10000,
-        10000,
-        10000,
-        10000,
-        10000,
-        10000
       ]
     },
     "jackpot": {

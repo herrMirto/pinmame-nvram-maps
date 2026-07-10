@@ -18,6 +18,21 @@
       "bsv100r"
     ]
   },
+  "game_state": {
+    "game_over": {
+      "_notes": [
+        "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."
+      ],
+      "label": "Game Over",
+      "start": "0x000012F2",
+      "encoding": "bool",
+      "mask": "0x40",
+      "invert": true
+    },
+    "_notes": [
+      "scores was removed: all four player entries aliased the NVRAM high-score mirror at 0x300000F0, so they reported leaderboard values instead of the game being played. Capcom keeps live scores in volatile DRAM (verified for bbb109 Player 1 at 0x00061F32); each game needs its own verified address before scores can be reinstated."
+    ]
+  },
   "high_scores": [
     {
       "label": "High Score #1",

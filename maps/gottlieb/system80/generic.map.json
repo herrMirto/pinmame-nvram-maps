@@ -5,19 +5,102 @@
     "All games share the same bookkeeping/audit and high score layout.",
     "High score addresses verified against Time Line (timeline.nv) with real scores.",
     "Other ROMs in this map have zero/virgin NVRAMs.",
-    "2026-03: Added System 80/80A ROMs: amazonh, cntforc7, cntforce, hh7, jack2opn, jamesb, mars7, panthera, pnkpnthr, qbquest, sorbit, spidermn, starrac7, striker, touchdn, vlcno_ax."
+    "2026-03: Added System 80/80A ROMs: amazonh, cntforc7, cntforce, hh7, jack2opn, jamesb, mars7, panthera, pnkpnthr, qbquest, sorbit, spidermn, starrac7, striker, touchdn, vlcno_ax.",
+    "Credits verified against labeled Volcano captures and cross-checked against Circus and Spider-Man NVRAMs.",
+    "The repeated score-like block at 0x1849 is retained high-score data, not a final player score.",
+    "Volatile player scores, player count, current ball, and game-over were verified against labeled four-player Volcano RAM captures."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 11,
     "copyright": [
-      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "gottlieb-system80",
     "roms": [
+      "blckhole",
+      "blkhol7s",
+      "blkhole7",
+      "blkholea",
+      "cntforce",
+      "eclipse",
+      "eclipse7",
+      "jack2opn",
+      "jamesb",
+      "jamesb2",
+      "jamesb7",
+      "jamesb7b",
+      "mars",
+      "mars7",
+      "panthera",
+      "qbquest",
+      "sorbit",
+      "starrace",
+      "striker",
+      "timelin7",
+      "timeline",
+      "touchdn",
+      "vlcno_a7",
       "vlcno_ax"
     ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x00D2",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 3
+      },
+      {
+        "label": "Player 2",
+        "start": "0x00D5",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 3
+      },
+      {
+        "label": "Player 3",
+        "start": "0x00D8",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 3
+      },
+      {
+        "label": "Player 4",
+        "start": "0x00DB",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 3
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x184E",
+      "encoding": "int",
+      "length": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x009A",
+      "encoding": "int",
+      "length": 1
+    },
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x0019",
+      "encoding": "int",
+      "length": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x00A0",
+      "encoding": "bool",
+      "length": 1
+    }
   },
   "high_scores": [
     {

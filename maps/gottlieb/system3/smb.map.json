@@ -1,20 +1,64 @@
 {
   "_notes": [
     "Compiled by Leprinco",
-    "Super Mario Bros (1992) - Gottlieb System 3"
+    "Super Mario Bros (1992) - Gottlieb System 3",
+    "Live game state verified against labeled smb3 captures. Final NVRAM decoded as 1825820/1703000/1809180/4207810 with 6 credits; user-reported first two scores were 1829820/1707000, likely display/readback differences."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 3,
     "copyright": [
       "Copyright (C) 2026 by Leprinco <leprinco@yahoo.fr>",
-      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "gottlieb-system3",
     "roms": [
-      "smb"
+      "smb",
+      "smb1",
+      "smb2",
+      "smb3"
     ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x0002",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 2",
+        "start": "0x0007",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 3",
+        "start": "0x000C",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 4",
+        "start": "0x0011",
+        "encoding": "bcd",
+        "length": 4
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x0016",
+      "encoding": "bcd"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0023",
+      "encoding": "bool",
+      "invert": true
+    }
   },
   "high_scores": [
     {

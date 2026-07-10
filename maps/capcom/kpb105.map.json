@@ -3,11 +3,11 @@
     "Kingpin (1996, Capcom).",
     "Capcom 16-bit bus: 8-bit NVRAM data on D0-D7, actual data at even file positions.",
     "CPU address = 0x30000000 + even_index * 2.",
-    "Scores stored as score/10 (scale: 10). Verified against PINemHi output."
+    "Scores stored as score/10 (scale: 10). Verified against the reference high-score data."
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
     ],
@@ -16,6 +16,21 @@
     "roms": [
       "kpb105",
       "kpv106"
+    ]
+  },
+  "game_state": {
+    "game_over": {
+      "_notes": [
+        "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."
+      ],
+      "label": "Game Over",
+      "start": "0x000012F2",
+      "encoding": "bool",
+      "mask": "0x40",
+      "invert": true
+    },
+    "_notes": [
+      "scores was removed: all four player entries aliased the NVRAM high-score mirror at 0x300000F0, so they reported leaderboard values instead of the game being played. Capcom keeps live scores in volatile DRAM (verified for bbb109 Player 1 at 0x00061F32); each game needs its own verified address before scores can be reinstated."
     ]
   },
   "high_scores": [
