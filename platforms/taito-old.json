@@ -1,0 +1,29 @@
+{
+  "_notes": [
+    "Early Taito do Brasil pinball hardware (8080 CPU, 1979-1980).",
+    "PinMAME saves CPU RAM 0x1000-0x10FF (including the display DMA RAM at 0x1000-0x100F) as NVRAM.",
+    "Multibyte BCD values are stored most-significant byte first."
+  ],
+  "cpu": "8080",
+  "endian": "big",
+  "memory_layout": [
+    {
+      "label": "ROM",
+      "address": "0x0000",
+      "size": "0x1000",
+      "type": "rom"
+    },
+    {
+      "label": "NVRAM",
+      "address": "0x1000",
+      "size": "0x100",
+      "type": "nvram"
+    },
+    {
+      "label": "ROM (upper)",
+      "address": "0x1800",
+      "size": "0x400",
+      "type": "rom"
+    }
+  ]
+}
