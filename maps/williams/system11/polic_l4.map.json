@@ -10,15 +10,19 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
-      "polic_l4"
+      "polic_l2",
+      "polic_l3",
+      "polic_l4",
+      "polic_lx5"
     ]
   },
   "game_state": {

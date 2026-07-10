@@ -10,12 +10,21 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
-    "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+    "version": 6,
+    "copyright": [
+      "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
-      "rollr_l2"
+      "rollr_e1",
+      "rollr_ex",
+      "rollr_g3",
+      "rollr_l2",
+      "rollr_l3",
+      "rollr_p2",
+      "rollr_ta2"
     ]
   },
   "game_state": {

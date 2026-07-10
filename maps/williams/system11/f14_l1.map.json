@@ -9,16 +9,19 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2017 by Dave Horse <horse@horsesoft.uk>",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
       "f14_l1",
-      "f14_p5"
+      "f14_p5",
+      "f14_p3",
+      "f14_p4"
     ]
   },
   "game_state": {

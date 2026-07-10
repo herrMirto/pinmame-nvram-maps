@@ -14,7 +14,8 @@
     "roms": [
       "bttf_a27",
       "bttf_a28",
-      "bttf_g27"
+      "bttf_g27",
+      "bttf_a20"
     ]
   },
   "game_state": {

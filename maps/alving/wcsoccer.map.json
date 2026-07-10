@@ -1,0 +1,163 @@
+{
+  "_notes": [
+    "World Challenge Soccer (1994), Alvin G. and Company.",
+    "Decoder constants are one-based file offsets; map offsets are adjusted to file offsets."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "alving",
+    "roms": [
+      "wcsoccd2",
+      "wcsoccer"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x11D4",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": "0x11DA",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": "0x11E0",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": "0x11E6",
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1BEC",
+      "encoding": "int"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x1F54",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x1F53",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0036",
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "MVP",
+      "short_label": "#1",
+      "initials": {
+        "start": "0xD0C",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD25",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "All Star #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0xD11",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD2A",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "All Star #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0xD16",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD2F",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "All Star #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0xD1B",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD34",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "All Star #5",
+      "short_label": "#5",
+      "initials": {
+        "start": "0xD20",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD39",
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "World Champ",
+      "initials": {
+        "start": "0x653",
+        "encoding": "ch",
+        "length": 3
+      }
+    },
+    {
+      "label": "Most Goals",
+      "initials": {
+        "start": "0x650",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0xD76",
+        "encoding": "bcd",
+        "length": 1
+      }
+    }
+  ]
+}

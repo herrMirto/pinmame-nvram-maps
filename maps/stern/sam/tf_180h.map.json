@@ -1,0 +1,247 @@
+{
+  "_notes": [
+    "Transformers 1.80H revision.",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 5,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "stern-sam",
+    "roms": [
+      "tf_180h"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x021109E4",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x021109EC",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x021109F4",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x021109FC",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "game_over": {
+      "_notes": [
+        "Stern SAM platform-wide game-in-progress flag at fixed NVRAM address 0x02110904, bit 0x40 (set = game over / no game in progress). The address is independent of the per-game live-score layout and was validated by live headless exercise (boot -> play -> game-over) on mtl_180h, trn_174 and xmn_150: bit 0x40 is set in attract/game-over and clear throughout active play (trn_174 0/242 and xmn_150 0/242 play snapshots set)."
+      ],
+      "label": "Game Over",
+      "start": "0x02110904",
+      "encoding": "bool",
+      "mask": "0x40"
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Autobot Grand Champion",
+      "short_label": "AGC",
+      "initials": {
+        "start": "0x2102E68",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102E80",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Autobot #1",
+      "short_label": "A#1",
+      "initials": {
+        "start": "0x2102E88",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102EA0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Autobot #2",
+      "short_label": "A#2",
+      "initials": {
+        "start": "0x2102EA8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102EC0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Autobot #3",
+      "short_label": "A#3",
+      "initials": {
+        "start": "0x2102EC8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102EE0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Autobot #4",
+      "short_label": "A#4",
+      "initials": {
+        "start": "0x2102EE8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102F00",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Decepticon Grand Champion",
+      "short_label": "DGC",
+      "initials": {
+        "start": "0x2102F08",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102F20",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Decepticon #1",
+      "short_label": "D#1",
+      "initials": {
+        "start": "0x2102F28",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102F40",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Decepticon #2",
+      "short_label": "D#2",
+      "initials": {
+        "start": "0x2102F48",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102F60",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Decepticon #3",
+      "short_label": "D#3",
+      "initials": {
+        "start": "0x2102F68",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102F80",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Decepticon #4",
+      "short_label": "D#4",
+      "initials": {
+        "start": "0x2102F88",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102FA0",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Combo Champion",
+      "short_label": "Combo",
+      "initials": {
+        "start": "0x2102FA8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102FC0",
+        "encoding": "int",
+        "length": 4,
+        "suffix": " Combos"
+      }
+    },
+    {
+      "label": "Best Combo Champion",
+      "short_label": "Best Combo",
+      "initials": {
+        "start": "0x2102FC8",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x2102FE2",
+        "encoding": "int",
+        "length": 1,
+        "suffix": "-WAY"
+      }
+    }
+  ]
+}

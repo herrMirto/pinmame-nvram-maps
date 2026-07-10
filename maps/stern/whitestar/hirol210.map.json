@@ -11,8 +11,7 @@
     "license": "GNU Lesser General Public License v3.0",
     "platform": "whitestar",
     "roms": [
-      "hirol210",
-      "hirol_gr"
+      "hirol210"
     ]
   },
   "game_state": {

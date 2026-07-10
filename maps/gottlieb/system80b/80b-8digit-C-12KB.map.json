@@ -11,10 +11,11 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2024 by Tom Collins <tom@tomlogic.com>",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "gottlieb-system80b-12K",
@@ -41,7 +42,14 @@
       "hotshgfp",
       "hotshffp",
       "nmoves",
-      "nmovesfp"
+      "nmovesfp",
+      "badgirlf",
+      "badgirlg",
+      "bighousf",
+      "bighousg",
+      "bonebstf",
+      "bonebstg",
+      "excalibg"
     ],
     "values": {
       "off_on": [

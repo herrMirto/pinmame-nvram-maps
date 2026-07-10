@@ -1,0 +1,150 @@
+{
+  "_notes": [
+    "Stargate (Gottlieb System 3).",
+    "Decoder constants are one-based file offsets; map offsets are adjusted to file offsets.",
+    "Live game state verified against labeled stargat5 captures: 4 players, scores 10740420/12173720/28963120/14996690, credits 3."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system3",
+    "roms": [
+      "stargat1",
+      "stargat2",
+      "stargat3",
+      "stargat4",
+      "stargat5",
+      "stargate"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x0002",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 2",
+        "start": "0x0007",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 3",
+        "start": "0x000C",
+        "encoding": "bcd",
+        "length": 4
+      },
+      {
+        "label": "Player 4",
+        "start": "0x0011",
+        "encoding": "bcd",
+        "length": 4
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x0016",
+      "encoding": "bcd"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0023",
+      "encoding": "bool",
+      "invert": true
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Explorer #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x0D0C",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D25",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Explorer #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x0D11",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D2A",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Explorer #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x0D16",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D2F",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Explorer #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x0D1B",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D34",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Explorer #5",
+      "short_label": "#5",
+      "initials": {
+        "start": "0x0D20",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D39",
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "High Combos",
+      "initials": {
+        "start": "0x0650",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0D7C",
+        "encoding": "bcd"
+      }
+    }
+  ]
+}

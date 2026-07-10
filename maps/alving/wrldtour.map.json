@@ -1,0 +1,141 @@
+{
+  "_notes": [
+    "Al's Garage Band Goes On a World Tour (1992), Alvin G. and Company, DMD, 10-digit scores"
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "alving",
+    "roms": [
+      "wrldtou2",
+      "wrldtour",
+      "wrldtou3",
+      "wrldtou4"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x11D4",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": "0x11DA",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": "0x11E0",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": "0x11E6",
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1BEC",
+      "encoding": "int"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x1F54",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x1F53",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0036",
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Lead Guitar",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x1F00",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E05",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Lead Singer",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x1F03",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E0A",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Drummer",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x1F06",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E0F",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Bass",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x1F09",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E14",
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Keyboard",
+      "short_label": "#5",
+      "initials": {
+        "start": "0x1F0C",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E19",
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ]
+}

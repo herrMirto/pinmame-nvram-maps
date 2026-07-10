@@ -1,0 +1,235 @@
+{
+  "_notes": [
+    "Star Trek 25th Anniversary [Data East, 1991]",
+    "Derived from trek_201 using documented ROM-specific high score shifts.",
+    "For trek_110/trek_11a: initials -0x1F, scores -0x20 from trek_201."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2016 by Dave horsepin <horse@horsesoft.uk>",
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "dataeast",
+    "roms": [
+      "trek_110",
+      "trek_11a"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "offsets": [
+          "0x1BE",
+          "0x1AE",
+          "0x1AF",
+          "0x1B0",
+          "0x1B1"
+        ]
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "offsets": [
+          "0x1BF",
+          "0x1B2",
+          "0x1B3",
+          "0x1B4",
+          "0x1B5"
+        ]
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "offsets": [
+          "0x1C0",
+          "0x1B6",
+          "0x1B7",
+          "0x1B8",
+          "0x1B9"
+        ]
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "offsets": [
+          "0x1C1",
+          "0x1BA",
+          "0x1BB",
+          "0x1BC",
+          "0x1BD"
+        ]
+      }
+    ],
+    "credits": {
+      "_notes": "Also at 0x51D?",
+      "label": "Credits",
+      "start": "0x16BE",
+      "encoding": "bcd"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "start": "0x1E04",
+      "encoding": "bool"
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "start": "0x1E0F",
+      "encoding": "bcd"
+    },
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1A2",
+      "encoding": "int"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "start": "0x1E0D",
+      "encoding": "bcd"
+    },
+    "current_player": {
+      "label": "Player",
+      "start": "0x19F",
+      "encoding": "int"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "start": "0x1A0",
+      "encoding": "int"
+    },
+    "game_over": {
+      "_notes": "game is over if current player/ball is 0",
+      "label": "Game Over",
+      "start": "0x19F",
+      "encoding": "bool",
+      "invert": true
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Admiral",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x168B",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1670",
+          "0x1658",
+          "0x1659",
+          "0x165A",
+          "0x165B"
+        ],
+        "scale": 100
+      }
+    },
+    {
+      "label": "Rear Admiral",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x168E",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1671",
+          "0x165C",
+          "0x165D",
+          "0x165E",
+          "0x165F"
+        ],
+        "scale": 100
+      }
+    },
+    {
+      "label": "Captain",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x1691",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1672",
+          "0x1660",
+          "0x1661",
+          "0x1662",
+          "0x1663"
+        ],
+        "scale": 100
+      }
+    },
+    {
+      "label": "Commander",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x1694",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1673",
+          "0x1664",
+          "0x1665",
+          "0x1666",
+          "0x1667"
+        ],
+        "scale": 100
+      }
+    },
+    {
+      "label": "Lieutenant",
+      "short_label": "#5",
+      "initials": {
+        "start": "0x1697",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1674",
+          "0x1668",
+          "0x1669",
+          "0x166A",
+          "0x166B"
+        ],
+        "scale": 100
+      }
+    },
+    {
+      "label": "Lieutenant J.G.",
+      "short_label": "#6",
+      "initials": {
+        "start": "0x169A",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "encoding": "bcd",
+        "offsets": [
+          "0x1675",
+          "0x166C",
+          "0x166D",
+          "0x166E",
+          "0x166F"
+        ],
+        "scale": 100
+      }
+    }
+  ]
+}

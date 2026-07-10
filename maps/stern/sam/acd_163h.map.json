@@ -1,0 +1,356 @@
+{
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 5,
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "stern-sam",
+    "roms": [
+      "acd_163h"
+    ],
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x02110A0C",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x02110A14",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x02110A1C",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x02110A24",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "game_over": {
+      "_notes": [
+        "Live-validated on representative AC/DC revisions 1.21, 1.63H, 1.65H, and non-H 1.70: 0x02110904 bit 0x40 is set in attract/game-over and clear during live and inter-ball states; this sibling's attract NVRAM also has the bit set."
+      ],
+      "label": "Game Over",
+      "start": "0x02110904",
+      "encoding": "bool",
+      "mask": "0x40"
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "initials": {
+        "start": "0x0210369C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021036B4",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "First Place",
+      "initials": {
+        "start": "0x021036C0",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021036D8",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Second Place",
+      "initials": {
+        "start": "0x021036E4",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021036FC",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Third Place",
+      "initials": {
+        "start": "0x02103708",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103720",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fourth Place",
+      "initials": {
+        "start": "0x0210372C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103744",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Combo Champion",
+      "initials": {
+        "start": "0x02103750",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103768",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Back In Black Champion",
+      "initials": {
+        "start": "0x02103774",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x0210378C",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "For Those About To Rock Champion",
+      "initials": {
+        "start": "0x02103798",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021037B0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Hell Aint A Bad Place To Be Champion",
+      "initials": {
+        "start": "0x021037BC",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021037D4",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Hells Bells Champion",
+      "initials": {
+        "start": "0x021037E0",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021037F8",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Highway To Hell Champion",
+      "initials": {
+        "start": "0x02103804",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x0210381C",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Let There Be Rock Champion",
+      "initials": {
+        "start": "0x02103828",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103840",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Rock N Roll Train Champion",
+      "initials": {
+        "start": "0x0210384C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103864",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Thunderstruck Champion",
+      "initials": {
+        "start": "0x02103870",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103888",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "T.N.T. Champion",
+      "initials": {
+        "start": "0x02103894",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021038AC",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "War Machine Champion",
+      "initials": {
+        "start": "0x021038B8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021038D0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Whole Lotta Rosie Champion",
+      "initials": {
+        "start": "0x021038DC",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021038F4",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "You Shook Me All Night Long Champion",
+      "initials": {
+        "start": "0x02103900",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103918",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Song Jackpot Champion",
+      "initials": {
+        "start": "0x02103924",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x0210393C",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Encore Champion",
+      "initials": {
+        "start": "0x0210396C",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02103960",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "_notes": [
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ]
+}

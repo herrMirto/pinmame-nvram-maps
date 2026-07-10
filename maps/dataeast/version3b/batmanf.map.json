@@ -7,9 +7,10 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
-      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "dataeast",
@@ -32,7 +33,10 @@
       "bmf_sp",
       "bmf_sv",
       "bmf_time",
-      "bmf_uk"
+      "bmf_uk",
+      "batmanf1",
+      "batmanf2",
+      "batmanf3"
     ]
   },
   "game_state": {

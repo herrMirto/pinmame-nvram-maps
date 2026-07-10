@@ -1,0 +1,190 @@
+{
+  "_notes": [
+    "World Cup Soccer FreeWPC 0.62 high-score layout.",
+    "This map intentionally includes only the high-score records present in the verified output."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "williams-wpc-8K",
+    "roms": [
+      "wcs_f62"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Players",
+      "start": 6057,
+      "encoding": "int"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": 5936,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": 5943,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": 5950,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": 5957,
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "game_id": {
+      "label": "WPC Game ID",
+      "start": 6156,
+      "encoding": "ch",
+      "length": 5
+    },
+    "credits": {
+      "_notes": "1-byte credits followed by 6 bytes encoding partial/bonus credits",
+      "label": "Credits",
+      "start": 7460,
+      "encoding": "int"
+    },
+    "volume": {
+      "label": "Volume",
+      "start": 7469,
+      "encoding": "int",
+      "min": 0,
+      "max": 31
+    },
+    "replay": {
+      "label": "Replay",
+      "start": 7493,
+      "encoding": "bcd",
+      "length": 2,
+      "scale": 1000000
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": 141,
+      "encoding": "bool"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": 1042,
+      "encoding": "int"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "start": 1043,
+      "encoding": "int"
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "start": 1044,
+      "encoding": "int"
+    },
+    "eb_on_this_ball": {
+      "label": "EBs this Ball",
+      "start": 1045,
+      "encoding": "int"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "start": 7064,
+      "encoding": "int"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "start": 7188,
+      "encoding": "int"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "start": 7190,
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "start": 6352,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6347,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "First Place",
+      "short_label": "1st",
+      "initials": {
+        "start": 6360,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6355,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Second Place",
+      "short_label": "2nd",
+      "initials": {
+        "start": 6368,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6363,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Third Place",
+      "short_label": "3rd",
+      "initials": {
+        "start": 6376,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6371,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Fourth Place",
+      "short_label": "4th",
+      "initials": {
+        "start": 6384,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6379,
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ]
+}

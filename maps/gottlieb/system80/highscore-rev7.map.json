@@ -1,0 +1,42 @@
+{
+  "_notes": [
+    "Gottlieb System 80 (early, 256-byte NVRAM). Single 'Highest Score' stored as 7 reverse-order digits (least-significant first), one BCD digit per byte (low nibble), starting at NVRAM file offset 0x47 (absolute 0x1847). Reverse-engineered and verified against the reference high scores. The shared system80 'generic' map read the wrong region for these titles."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system80",
+    "roms": [
+      "circus7",
+      "cntforc7",
+      "forceii7",
+      "hh7",
+      "panther7",
+      "pnkpntr7",
+      "starrac7"
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Highest Score",
+      "short_label": "HS",
+      "score": {
+        "offsets": [
+          "0x184d",
+          "0x184c",
+          "0x184b",
+          "0x184a",
+          "0x1849",
+          "0x1848",
+          "0x1847"
+        ],
+        "encoding": "bcd",
+        "nibble": "low"
+      }
+    }
+  ]
+}

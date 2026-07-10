@@ -1,0 +1,125 @@
+{
+  "_notes": [
+    "Gottlieb System 1 shared map for early single-player solid-state titles using the reverse decimal-digit high-score layout.",
+    "Covers Joker Poker, Torch, Genie, Sinbad, Totem, Hulk, Close Encounters, Charlie's Angels, Buck Rogers, Pinball Pool, Roller Disco, Solar Ride, and Asteroid Annie.",
+    "These ROMs were formerly misclassified under maps/williams/system3/torch.map.json with platform williams-system4.",
+    "Score/high-score digits are stored one decimal digit per byte in reverse order.",
+    "Persisted high score (0x1A0-0x1A5) and credits (0x102) live in NVRAM and are verified against dumps. Live game_state (player scores 0x80-0x97, game_over 0x00) lives in volatile RAM, so it is not present in .nv dumps and must be confirmed against a live capture."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 4,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system1",
+    "roms": [
+      "astannie",
+      "buckrgrs",
+      "charlies",
+      "cleoptra",
+      "closeenc",
+      "genie",
+      "hulk",
+      "jokrpokr",
+      "pinpool",
+      "roldisco",
+      "sinbad",
+      "sinbadn",
+      "solaride",
+      "torch",
+      "totem"
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Highest Score",
+      "short_label": "HS",
+      "score": {
+        "offsets": [
+          "0x1A5",
+          "0x1A4",
+          "0x1A3",
+          "0x1A2",
+          "0x1A1",
+          "0x1A0"
+        ],
+        "encoding": "bcd",
+        "nibble": "low"
+      }
+    }
+  ],
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "nibble": "low",
+        "offsets": [
+          "0x85",
+          "0x84",
+          "0x83",
+          "0x82",
+          "0x81",
+          "0x80"
+        ]
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "nibble": "low",
+        "offsets": [
+          "0x8B",
+          "0x8A",
+          "0x89",
+          "0x88",
+          "0x87",
+          "0x86"
+        ]
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "nibble": "low",
+        "offsets": [
+          "0x91",
+          "0x90",
+          "0x8F",
+          "0x8E",
+          "0x8D",
+          "0x8C"
+        ]
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "nibble": "low",
+        "offsets": [
+          "0x97",
+          "0x96",
+          "0x95",
+          "0x94",
+          "0x93",
+          "0x92"
+        ]
+      }
+    ],
+    "game_over": {
+      "offsets": [
+        "0x00"
+      ],
+      "encoding": "int",
+      "nibble": "low",
+      "mask": 1
+    },
+    "credits": {
+      "offsets": [
+        "0x102"
+      ],
+      "encoding": "int",
+      "nibble": "low"
+    }
+  }
+}

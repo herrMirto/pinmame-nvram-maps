@@ -11,16 +11,7 @@
     "license": "GNU Lesser General Public License v3.0",
     "platform": "whitestar",
     "roms": [
-      "term3",
-      "term3_3",
-      "term3f",
-      "term3f_3",
-      "term3g",
-      "term3g_3",
-      "term3i",
-      "term3i_3",
-      "term3l",
-      "term3l_3"
+      "term3"
     ]
   },
   "game_state": {

@@ -9,10 +9,11 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 5,
+    "version": 6,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
@@ -20,7 +21,11 @@
       "esha_la1",
       "esha_la3",
       "esha_l4c",
-      "esha_pr4"
+      "esha_pr4",
+      "esha_lg1",
+      "esha_lg2",
+      "esha_pa1",
+      "esha_pa4"
     ]
   },
   "game_state": {

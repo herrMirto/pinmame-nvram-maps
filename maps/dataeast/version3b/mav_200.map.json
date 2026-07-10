@@ -14,7 +14,8 @@
     "platform": "dataeast",
     "roms": [
       "mav_100",
-      "mav_200"
+      "mav_200",
+      "mav_404g"
     ]
   },
   "game_state": {

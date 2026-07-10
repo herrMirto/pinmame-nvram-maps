@@ -1,0 +1,276 @@
+{
+  "_notes": [
+    "Derived from native NVRAM offsets.",
+    "This map focuses on current/last game score extraction.",
+    "Verify score encoding/scale with real NVRAM before production use.",
+    "Player score fields currently mirror top saved score slots until per-player RAM offsets are mapped."
+  ],
+  "_fileformat": 0.7,
+  "_metadata": {
+    "version": 3,
+    "platform": "capcom",
+    "roms": [
+      "pmv112",
+      "pmv112r"
+    ]
+  },
+  "game_state": {
+    "game_over": {
+      "_notes": [
+        "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."
+      ],
+      "label": "Game Over",
+      "start": "0x000012F2",
+      "encoding": "bool",
+      "mask": "0x40",
+      "invert": true
+    },
+    "_notes": [
+      "scores was removed: all four player entries aliased the NVRAM high-score mirror at 0x300000F0, so they reported leaderboard values instead of the game being played. Capcom keeps live scores in volatile DRAM (verified for bbb109 Player 1 at 0x00061F32); each game needs its own verified address before scores can be reinstated."
+    ]
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "initials": {
+        "offsets": [
+          "0x30000118",
+          "0x3000011A",
+          "0x3000011C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300000F0",
+          "0x300000F2",
+          "0x300000F4",
+          "0x300000F6"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Power Magician #1",
+      "initials": {
+        "offsets": [
+          "0x30000120",
+          "0x30000122",
+          "0x30000124"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x300000F8",
+          "0x300000FA",
+          "0x300000FC",
+          "0x300000FE"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Power Magician #2",
+      "initials": {
+        "offsets": [
+          "0x30000128",
+          "0x3000012A",
+          "0x3000012C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000100",
+          "0x30000102",
+          "0x30000104",
+          "0x30000106"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Power Magician #3",
+      "initials": {
+        "offsets": [
+          "0x30000130",
+          "0x30000132",
+          "0x30000134"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000108",
+          "0x3000010A",
+          "0x3000010C",
+          "0x3000010E"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Power Magician #4",
+      "initials": {
+        "offsets": [
+          "0x30000138",
+          "0x3000013A",
+          "0x3000013C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000110",
+          "0x30000112",
+          "0x30000114",
+          "0x30000116"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Buy-in Magician #1",
+      "initials": {
+        "offsets": [
+          "0x30000168",
+          "0x3000016A",
+          "0x3000016C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000140",
+          "0x30000142",
+          "0x30000144",
+          "0x30000146"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Buy-in Magician #2",
+      "initials": {
+        "offsets": [
+          "0x30000170",
+          "0x30000172",
+          "0x30000174"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000148",
+          "0x3000014A",
+          "0x3000014C",
+          "0x3000014E"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Buy-in Magician #3",
+      "initials": {
+        "offsets": [
+          "0x30000178",
+          "0x3000017A",
+          "0x3000017C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000150",
+          "0x30000152",
+          "0x30000154",
+          "0x30000156"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Buy-in Magician #4",
+      "initials": {
+        "offsets": [
+          "0x30000180",
+          "0x30000182",
+          "0x30000184"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000158",
+          "0x3000015A",
+          "0x3000015C",
+          "0x3000015E"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    },
+    {
+      "label": "Buy-in Magician #5",
+      "initials": {
+        "offsets": [
+          "0x30000188",
+          "0x3000018A",
+          "0x3000018C"
+        ],
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "offsets": [
+          "0x30000160",
+          "0x30000162",
+          "0x30000164",
+          "0x30000166"
+        ],
+        "encoding": "int",
+        "endian": "big",
+        "length": 4,
+        "scale": 10
+      }
+    }
+  ]
+}

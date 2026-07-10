@@ -8,20 +8,34 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 3,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2022 by HorsePin",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "stern-m200",
     "roms": [
       "freefall",
+      "cue",
       "dragfist",
       "ironmaid",
+      "ironmafp",
       "lightnin",
       "splitsec",
-      "viper"
+      "viper",
+      "viperfp",
+      "dragfis14",
+      "dragfis3",
+      "dragfis3b",
+      "dragfisb",
+      "dragfib2",
+      "dragfifp",
+      "flightfp",
+      "freefafp",
+      "quicksfp",
+      "seawitfp"
     ]
   },
   "game_state": {

@@ -12,10 +12,6 @@
     "license": "GNU Lesser General Public License v3.0",
     "platform": "whitestar",
     "roms": [
-      "simp204",
-      "simp204f",
-      "simp204i",
-      "simp204l",
       "simp300",
       "simp300f",
       "simp300i",

@@ -1,0 +1,190 @@
+{
+  "_notes": [
+    "Batman The Dark Knight 2.x Stern SAM revisions.",
+    "Offsets follow the earlier 2.x NVRAM layout.",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 5,
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "stern-sam",
+    "roms": [
+      "bdk_210",
+      "bdk_220",
+      "bdk_240"
+    ],
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x021109F0",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x021109F8",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x02110A00",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x02110A08",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x02110905",
+      "encoding": "bool",
+      "mask": "0x40"
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "initials": {
+        "start": "0x02102948",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02102960",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "First Place",
+      "initials": {
+        "start": "0x02102968",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02102980",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Second Place",
+      "initials": {
+        "start": "0x02102988",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021029A0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Third Place",
+      "initials": {
+        "start": "0x021029A8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021029C0",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fourth Place",
+      "initials": {
+        "start": "0x021029C8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x021029E0",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Batmobile Hurry-Up Champion",
+      "initials": {
+        "start": "0x021029E8",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02102A00",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Bat Signal Challenge Champion",
+      "initials": {
+        "start": "0x02102A08",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02102A20",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "Gotham City Champion",
+      "initials": {
+        "start": "0x02102A28",
+        "encoding": "ch",
+        "null": "terminate",
+        "length": 11
+      },
+      "score": {
+        "start": "0x02102A40",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ]
+}

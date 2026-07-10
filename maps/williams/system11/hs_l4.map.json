@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2017 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -17,7 +17,8 @@
     "platform": "williams-system11-40K",
     "roms": [
       "hs_l3",
-      "hs_l4"
+      "hs_l4",
+      "hs_p4g"
     ]
   },
   "game_state": {

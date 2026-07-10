@@ -1,0 +1,19 @@
+{
+  "_notes": "Bally MPU-6803 (1985-1989): Eight Ball Champ, Beat the Clock, Lady Luck, MotorDome, Black Belt, Heavy Metal Meltdown, City Slicker, Special Force, Strange Science, Party Animal, Dungeons & Dragons, Blackwater 100, Truck Stop, Atlantis, Escape from the Lost World. Motorola 6803 CPU, 2KB battery NVRAM at 0x0000. (Previously these maps were mislabeled gottlieb-system3.)",
+  "cpu": "M6803",
+  "endian": "big",
+  "memory_layout": [
+    {
+      "label": "NVRAM",
+      "address": "0x0000",
+      "size": "0x800",
+      "type": "nvram"
+    },
+    {
+      "label": "ROM",
+      "address": "0x8000",
+      "size": "0x8000",
+      "type": "rom"
+    }
+  ]
+}

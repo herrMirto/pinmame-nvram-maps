@@ -1,0 +1,97 @@
+{
+  "_notes": [
+    "Eight Ball Champ / Beat the Clock / Lady Luck / MotorDome high score decoder family.",
+    "Decoder constants are one-based file offsets; score uses the high nibble of seven little-endian score bytes."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "bally-6803",
+    "roms": [
+      "beatclc2",
+      "beatclck",
+      "eballch2",
+      "eballchp",
+      "ladyluck",
+      "motrdome"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x049A",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 2",
+        "start": "0x049E",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 3",
+        "start": "0x04A2",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 4",
+        "start": "0x04A6",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x023E",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x01DD",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x027E",
+      "encoding": "int"
+    },
+    "credits": {
+      "label": "Credits",
+      "start": "0x001F",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0264",
+      "encoding": "bool",
+      "invert": true
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Highest Score",
+      "short_label": "HS",
+      "score": {
+        "start": "0x0618",
+        "encoding": "bcd",
+        "length": 7,
+        "nibble": "high",
+        "endian": "little"
+      }
+    }
+  ]
+}

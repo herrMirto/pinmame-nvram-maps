@@ -1,0 +1,95 @@
+{
+  "_notes": [
+    "Attack (Game Plan, 1980).",
+    "Score bytes are stored as three packed BCD groups."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "williams-system4",
+    "roms": [
+      "attack",
+      "cerberus"
+    ]
+  },
+  "game_state": {
+    "credits": {
+      "label": "Credits",
+      "start": "0x019A",
+      "length": 2,
+      "encoding": "bcd"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x00",
+        "length": 3,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 2",
+        "start": "0x04",
+        "length": 3,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 3",
+        "start": "0x08",
+        "length": 3,
+        "encoding": "bcd"
+      },
+      {
+        "label": "Player 4",
+        "start": "0x0C",
+        "length": 3,
+        "encoding": "bcd"
+      }
+    ],
+    "current_player": {
+      "label": "Player",
+      "start": "0x55",
+      "encoding": "int",
+      "offset": 1
+    },
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x56",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Ball",
+      "start": "0x03",
+      "encoding": "bcd"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "start": "0x01A6",
+      "length": 2,
+      "encoding": "bcd"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "start": "0x018C",
+      "length": 2,
+      "encoding": "bcd"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Highest Score",
+      "short_label": "HS",
+      "score": {
+        "start": "0x130",
+        "encoding": "bcd",
+        "length": 3,
+        "nibble": "both"
+      }
+    }
+  ]
+}

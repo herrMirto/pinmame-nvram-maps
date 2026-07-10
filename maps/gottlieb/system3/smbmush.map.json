@@ -1,0 +1,169 @@
+{
+  "_notes": [
+    "Super Mario Bros. Mushroom World."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system3",
+    "roms": [
+      "smbmush"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": "set to 0 when game over",
+      "label": "Player Count",
+      "short_label": "Players",
+      "start": "0x201",
+      "encoding": "int"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x001"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x006"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x00B"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x010"
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x201",
+      "encoding": "bool",
+      "invert": true
+    },
+    "credits": {
+      "_notes": [
+        "Inherited from andretti.map.json (same live-score layout, offset 1); validated: smbmush reads 0 at this offset."
+      ],
+      "label": "Credits",
+      "start": "0x490",
+      "encoding": "bcd"
+    },
+    "current_player": {
+      "_notes": "0-3; bit 7 (0x80) sometimes set?",
+      "label": "Current Player",
+      "short_label": "P#",
+      "start": "0x200",
+      "encoding": "int",
+      "mask": "0x0F",
+      "offset": 1
+    },
+    "current_ball": {
+      "_notes": "set to 0 when game over",
+      "label": "Ball",
+      "start": "0x15",
+      "encoding": "bcd"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Mario's Friends #1",
+      "short_label": "#1",
+      "initials": {
+        "start": 1676,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1701,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Mario's Friends #2",
+      "short_label": "#2",
+      "initials": {
+        "start": 1681,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1706,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Mario's Friends #3",
+      "short_label": "#3",
+      "initials": {
+        "start": 1686,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1711,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Mario's Friends #4",
+      "short_label": "#4",
+      "initials": {
+        "start": 1691,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1716,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "Mario's Friends #5",
+      "short_label": "#5",
+      "initials": {
+        "start": 1696,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1721,
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ],
+  "mode_champions": [
+    {
+      "label": "Ticket Champion",
+      "short_label": "Ticket",
+      "initials": {
+        "start": 296,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 1766,
+        "encoding": "bcd",
+        "length": 1
+      }
+    }
+  ]
+}

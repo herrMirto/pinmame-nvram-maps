@@ -10,12 +10,20 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 4,
-    "copyright": "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+    "version": 5,
+    "copyright": [
+      "Copyright (C) 2025 by Tom Collins <tom@tomlogic.com>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "williams-system11-48K",
     "roms": [
-      "dd_l2"
+      "dd_l2",
+      "dd_l3c",
+      "dd_lu1",
+      "dd_p6",
+      "dd_p06",
+      "dd_p7"
     ],
     "char_map": " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   },

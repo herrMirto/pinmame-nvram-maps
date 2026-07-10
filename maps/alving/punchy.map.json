@@ -1,0 +1,141 @@
+{
+  "_notes": [
+    "Punchy The Clown (R02, 1993, Alvin G. and Company).",
+    "Scores: 5 x 5-byte BCD packed at 0x1E05 (5 bytes apart).",
+    "Names: 5 x 6-byte ASCII packed at 0x1F00 (6 bytes apart)."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "alving",
+    "roms": [
+      "punchy"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x11D4",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": "0x11DA",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": "0x11E0",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": "0x11E6",
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1BEC",
+      "encoding": "int"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x1F54",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x1F53",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0036",
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "My Best Friend",
+      "short_label": "Best",
+      "initials": {
+        "start": "0x1F00",
+        "encoding": "ch",
+        "length": 6
+      },
+      "score": {
+        "start": "0x1E05",
+        "length": 5,
+        "encoding": "bcd"
+      }
+    },
+    {
+      "label": "My Other Friends #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x1F06",
+        "encoding": "ch",
+        "length": 6
+      },
+      "score": {
+        "start": "0x1E0A",
+        "length": 5,
+        "encoding": "bcd"
+      }
+    },
+    {
+      "label": "My Other Friends #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x1F0C",
+        "encoding": "ch",
+        "length": 6
+      },
+      "score": {
+        "start": "0x1E0F",
+        "length": 5,
+        "encoding": "bcd"
+      }
+    },
+    {
+      "label": "My Other Friends #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x1F12",
+        "encoding": "ch",
+        "length": 6
+      },
+      "score": {
+        "start": "0x1E14",
+        "length": 5,
+        "encoding": "bcd"
+      }
+    },
+    {
+      "label": "My Other Friends #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x1F18",
+        "encoding": "ch",
+        "length": 6
+      },
+      "score": {
+        "start": "0x1E19",
+        "length": 5,
+        "encoding": "bcd"
+      }
+    }
+  ]
+}

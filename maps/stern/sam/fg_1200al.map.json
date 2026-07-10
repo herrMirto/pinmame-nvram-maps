@@ -1,0 +1,157 @@
+{
+  "_notes": [
+    "Family Guy / Shrek (Stern SAM).",
+    "Decoder constants are one-based file offsets; SAM map offsets are adjusted to CPU-addressed NVRAM offsets.",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 6,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "stern-sam",
+    "roms": [
+      "fg_1200af",
+      "fg_1200ag",
+      "fg_1200ai",
+      "fg_1200al",
+      "shr_130",
+      "shr_141"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x021109E4",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 2",
+        "start": "0x021109EC",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 3",
+        "start": "0x021109F4",
+        "encoding": "int",
+        "length": 8
+      },
+      {
+        "label": "Player 4",
+        "start": "0x021109FC",
+        "encoding": "int",
+        "length": 8
+      }
+    ],
+    "game_over": {
+      "_notes": [
+        "Stern SAM platform-wide game-in-progress flag at fixed NVRAM address 0x02110904, bit 0x40 (set = game over / no game in progress). The address is independent of the per-game live-score layout and was validated by live headless exercise (boot -> play -> game-over) on mtl_180h, trn_174 and xmn_150: bit 0x40 is set in attract/game-over and clear throughout active play (trn_174 0/242 and xmn_150 0/242 play snapshots set)."
+      ],
+      "label": "Game Over",
+      "start": "0x02110904",
+      "encoding": "bool",
+      "mask": "0x40"
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "start": "0x02102B60",
+        "encoding": "ch",
+        "length": 10,
+        "mask": "0x7F"
+      },
+      "score": {
+        "start": "0x02102B78",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x02102B80",
+        "encoding": "ch",
+        "length": 10,
+        "mask": "0x7F"
+      },
+      "score": {
+        "start": "0x02102B98",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x02102BA0",
+        "encoding": "ch",
+        "length": 10,
+        "mask": "0x7F"
+      },
+      "score": {
+        "start": "0x02102BB8",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x02102BC0",
+        "encoding": "ch",
+        "length": 10,
+        "mask": "0x7F"
+      },
+      "score": {
+        "start": "0x02102BD8",
+        "encoding": "int",
+        "length": 4
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x02102BE0",
+        "encoding": "ch",
+        "length": 10,
+        "mask": "0x7F"
+      },
+      "score": {
+        "start": "0x02102BF8",
+        "encoding": "int",
+        "length": 4
+      }
+    }
+  ]
+}

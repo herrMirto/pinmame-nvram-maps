@@ -1,0 +1,190 @@
+{
+  "_notes": [
+    "Twilight Zone FreeWPC 0.86 high-score layout.",
+    "High score records are stored before the later WPC early/prototype layout."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "williams-wpc-8K",
+    "roms": [
+      "tz_f86"
+    ]
+  },
+  "game_state": {
+    "player_count": {
+      "label": "Players",
+      "start": 5913,
+      "encoding": "int"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": 5792,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": 5799,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": 5806,
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": 5813,
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "game_id": {
+      "label": "WPC Game ID",
+      "start": 6156,
+      "encoding": "ch",
+      "length": 5
+    },
+    "credits": {
+      "_notes": "1-byte credits followed by 6 bytes encoding partial/bonus credits",
+      "label": "Credits",
+      "start": 7552,
+      "encoding": "int"
+    },
+    "volume": {
+      "label": "Volume",
+      "start": 7561,
+      "encoding": "int",
+      "min": 0,
+      "max": 31
+    },
+    "replay": {
+      "label": "Replay",
+      "start": 7585,
+      "encoding": "bcd",
+      "length": 2,
+      "scale": 1000000
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": 141,
+      "encoding": "bool"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": 946,
+      "encoding": "int"
+    },
+    "current_ball": {
+      "label": "Ball",
+      "start": 947,
+      "encoding": "int"
+    },
+    "extra_balls": {
+      "label": "Extra Balls",
+      "start": 948,
+      "encoding": "int"
+    },
+    "eb_on_this_ball": {
+      "label": "EBs this Ball",
+      "start": 949,
+      "encoding": "int"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "start": 7136,
+      "encoding": "int"
+    },
+    "max_credits": {
+      "label": "Maximum Credits",
+      "start": 7260,
+      "encoding": "int"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "start": 7262,
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Grand Champion",
+      "short_label": "GC",
+      "initials": {
+        "start": 6367,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6362,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "High Score #1",
+      "short_label": "#1",
+      "initials": {
+        "start": 6375,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6370,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "#2",
+      "initials": {
+        "start": 6383,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6378,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "#3",
+      "initials": {
+        "start": 6391,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6386,
+        "encoding": "bcd",
+        "length": 5
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "#4",
+      "initials": {
+        "start": 6399,
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": 6394,
+        "encoding": "bcd",
+        "length": 5
+      }
+    }
+  ]
+}

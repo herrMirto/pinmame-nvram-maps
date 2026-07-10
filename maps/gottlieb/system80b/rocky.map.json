@@ -1,0 +1,103 @@
+{
+  "_notes": [
+    "Shared single high-score layout for ROMs using the Rocky decoder family.",
+    "Score digits are stored one decimal digit per byte in reverse order.",
+    "Live game state verified against labeled four-player Alien Star RAM captures.",
+    "Final scores are restored when the game returns to attract mode; game_over deliberately follows that stable attract transition."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 2,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system80b-8K",
+    "roms": [
+      "alienstr",
+      "caveman",
+      "cavemana",
+      "dvlsdre",
+      "dvlsdre2",
+      "eldorado",
+      "goinnuts",
+      "icefever",
+      "krull",
+      "punk",
+      "rackemup",
+      "raimfire",
+      "rflshdlx",
+      "rocky",
+      "spirit",
+      "thegames"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x00D2",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 2,
+        "scale": 10
+      },
+      {
+        "label": "Player 2",
+        "start": "0x00D5",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 2,
+        "scale": 10
+      },
+      {
+        "label": "Player 3",
+        "start": "0x00D8",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 2,
+        "scale": 10
+      },
+      {
+        "label": "Player 4",
+        "start": "0x00DB",
+        "encoding": "bcd",
+        "endian": "little",
+        "length": 2,
+        "scale": 10
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x184E",
+      "encoding": "int",
+      "length": 1
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x00A8",
+      "encoding": "bool",
+      "length": 1
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Highest Score",
+      "short_label": "HS",
+      "score": {
+        "offsets": [
+          "0x184D",
+          "0x184C",
+          "0x184B",
+          "0x184A",
+          "0x1849",
+          "0x1848",
+          "0x1847"
+        ],
+        "encoding": "bcd",
+        "nibble": "low"
+      }
+    }
+  ]
+}

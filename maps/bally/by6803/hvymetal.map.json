@@ -1,0 +1,160 @@
+{
+  "_notes": [
+    "Heavy Metal Meltdown / Black Belt / City Slicker / Dungeon & Dragons / Hardbody /",
+    "Party Animal / Special Force / Strange Science high score decoder family.",
+    "Decoder constants are one-based file offsets; scores use the high nibble of seven",
+    "little-endian score bytes.",
+    "",
+    "This family stores FOUR independent high scores (not one as the sibling eballchp",
+    "family does). Each score occupies 7 consecutive bytes at +7 intervals from 0x0618.",
+    "Initials occupy 3 bytes each at +3 intervals from 0x06C3."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 3,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "bally-6803",
+    "roms": [
+      "blackbl2",
+      "blackblt",
+      "cityslck",
+      "dungdrag",
+      "hardbdyg",
+      "hardbody",
+      "hvymetal",
+      "prtyanim",
+      "specforc",
+      "strngsci"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x049A",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 2",
+        "start": "0x049E",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 3",
+        "start": "0x04A2",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      },
+      {
+        "label": "Player 4",
+        "start": "0x04A6",
+        "encoding": "int",
+        "length": 4,
+        "endian": "little"
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x023E",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x01DD",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x027E",
+      "encoding": "int"
+    },
+    "credits": {
+      "label": "Credits",
+      "start": "0x001F",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0264",
+      "encoding": "bool",
+      "invert": true
+    }
+  },
+  "high_scores": [
+    {
+      "label": "High Score #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x06C3",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0618",
+        "encoding": "bcd",
+        "length": 7,
+        "nibble": "high",
+        "endian": "little"
+      }
+    },
+    {
+      "label": "High Score #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x06C6",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x061F",
+        "encoding": "bcd",
+        "length": 7,
+        "nibble": "high",
+        "endian": "little"
+      }
+    },
+    {
+      "label": "High Score #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x06C9",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x0626",
+        "encoding": "bcd",
+        "length": 7,
+        "nibble": "high",
+        "endian": "little"
+      }
+    },
+    {
+      "label": "High Score #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x06CC",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x062D",
+        "encoding": "bcd",
+        "length": 7,
+        "nibble": "high",
+        "endian": "little"
+      }
+    }
+  ]
+}

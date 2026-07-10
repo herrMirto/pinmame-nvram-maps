@@ -1,0 +1,173 @@
+{
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "gottlieb-system3",
+    "roms": [
+      "beav_butt"
+    ],
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "nibble": "low",
+        "length": 8,
+        "start": "0x001"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "nibble": "low",
+        "length": 8,
+        "start": "0x00D"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "nibble": "low",
+        "length": 8,
+        "start": "0x015"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "nibble": "low",
+        "length": 8,
+        "start": "0x021"
+      }
+    ],
+    "credits": {
+      "_notes": "mirrored to 0x1E/0x1F (ascii), 0x5B1, and 0x642 as well",
+      "label": "Credits",
+      "start": "0x490",
+      "encoding": "bcd"
+    },
+    "max_credits": {
+      "label": "Max Credits",
+      "start": "0x6BD",
+      "encoding": "bcd"
+    },
+    "free_play": {
+      "label": "Free Play",
+      "start": "0x6CB",
+      "encoding": "bool"
+    },
+    "current_ball": {
+      "_notes": "set to 0 when game over; stores ASCII value (0x30 - 0x35)",
+      "label": "Ball",
+      "start": "0x0B",
+      "mask": "0x0F",
+      "encoding": "bcd"
+    },
+    "ball_count": {
+      "label": "Ball Count",
+      "start": "0x6BF",
+      "encoding": "bcd"
+    },
+    "current_player": {
+      "_notes": "0-3; bit 7 (0x80) sometimes set?",
+      "label": "Current Player",
+      "short_label": "P#",
+      "start": "0x343",
+      "encoding": "int",
+      "mask": "0x0F",
+      "offset": 1
+    },
+    "player_count": {
+      "_notes": "set to 0 when game over",
+      "label": "Player Count",
+      "short_label": "Players",
+      "start": "0x342",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x342",
+      "encoding": "bool",
+      "invert": true
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Fartknocker #1",
+      "short_label": "#1",
+      "initials": {
+        "start": "0x0686",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x069A",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fartknocker #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x068A",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x069E",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fartknocker #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x068E",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x06A2",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fartknocker #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x0692",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x06A6",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Fartknocker #5",
+      "short_label": "#5",
+      "initials": {
+        "start": "0x0696",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x06AA",
+        "encoding": "bcd",
+        "length": 4
+      }
+    }
+  ],
+  "_notes": [
+    "Beavis and Butt-Head (Sega Whitestar prototype/mod).",
+    "Extracted from the game-specific decoder layout and verified against local NVRAM data."
+  ]
+}

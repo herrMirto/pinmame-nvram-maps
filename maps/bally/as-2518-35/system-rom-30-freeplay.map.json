@@ -19,17 +19,20 @@
     "version": 4,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
-      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
+      "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
     ],
     "license": "GNU Lesser General Public License v3.0",
     "platform": "bally-35-8K",
     "roms": [
+      "blackjcc",
       "paragonc",
       "paragond",
       "playboyc",
       "playboyd",
       "sstc",
       "sstd",
+      "smmanb",
       "startrec",
       "startred",
       "voltanc",

@@ -1,0 +1,145 @@
+{
+  "_notes": [
+    "Alvin G. Soccer / A.G. Football.",
+    "Decoder constants are one-based file offsets; map offsets are adjusted to file offsets."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
+      "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "alving",
+    "roms": [
+      "agfoot07",
+      "agfootbl",
+      "agfootbl25l",
+      "agsocc07",
+      "agsoccer",
+      "agsoccer25l"
+    ]
+  },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x11D4",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": "0x11DA",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": "0x11E0",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": "0x11E6",
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1BEC",
+      "encoding": "int"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x1F54",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x1F53",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0036",
+      "encoding": "bool"
+    }
+  },
+  "high_scores": [
+    {
+      "label": "Most Valuable Player",
+      "short_label": "MVP",
+      "initials": {
+        "start": "0x1F00",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E04",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Champion #2",
+      "short_label": "#2",
+      "initials": {
+        "start": "0x1F03",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E08",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Champion #3",
+      "short_label": "#3",
+      "initials": {
+        "start": "0x1F06",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E0C",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Champion #4",
+      "short_label": "#4",
+      "initials": {
+        "start": "0x1F09",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E10",
+        "encoding": "bcd",
+        "length": 4
+      }
+    },
+    {
+      "label": "Champion #5",
+      "short_label": "#5",
+      "initials": {
+        "start": "0x1F0C",
+        "encoding": "ch",
+        "length": 3
+      },
+      "score": {
+        "start": "0x1E14",
+        "encoding": "bcd",
+        "length": 4
+      }
+    }
+  ]
+}
