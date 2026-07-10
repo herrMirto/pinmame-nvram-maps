@@ -1,10 +1,11 @@
 {
   "_notes": [
-    "Compiled by Tom Collins, based on st_162h by HorsePin"
+    "Compiled by Tom Collins, based on st_162h by HorsePin",
+    "SAM stores the 4 player scores as 4 x 8-byte (64-bit little-endian) fields: stride 8, not 4. The prior stride-4/length-4 layout mis-read players 2-4 (P2 read the zero high-bytes of P1, etc.). Corrected and validated against real 2-/3-/4-player Metallica dumps (mtl_180h)."
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 2,
+    "version": 5,
     "copyright": [
       "Copyright (C)2024 by Tom Collins <tom@tomlogic.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -17,32 +18,59 @@
     ]
   },
   "game_state": {
+    "player_count": {
+      "_notes": [
+        "Stern SAM number-of-players-in-game at fixed NVRAM address 0x02110900 (adjacent to game_over 0x02110904 in the SAM game-state header). Identified from three real played dumps: the only byte that reads exactly 2 / 3 / 4 in 2-, 3- and 4-player games (mtl_180h)."
+      ],
+      "label": "Player Count",
+      "start": "0x02110900",
+      "encoding": "int",
+      "length": 1
+    },
     "scores": [
       {
         "label": "Player 1",
+        "start": "0x02110A0C",
         "encoding": "int",
-        "length": 4,
-        "start": "0x2110A0C"
+        "length": 8
       },
       {
         "label": "Player 2",
+        "start": "0x02110A14",
         "encoding": "int",
-        "length": 4,
-        "start": "0x2110A10"
+        "length": 8
       },
       {
         "label": "Player 3",
+        "start": "0x02110A1C",
         "encoding": "int",
-        "length": 4,
-        "start": "0x2110A14"
+        "length": 8
       },
       {
         "label": "Player 4",
+        "start": "0x02110A24",
         "encoding": "int",
-        "length": 4,
-        "start": "0x2110A18"
+        "length": 8
       }
-    ]
+    ],
+    "game_over": {
+      "_notes": [
+        "Inherited from the immediately preceding st_161h firmware family, where real attract, live, last-ball, and game-over captures validate 0x021125C4 as zero during play and non-zero at game-over."
+      ],
+      "label": "Game Over",
+      "start": "0x021125C4",
+      "encoding": "bool",
+      "length": 1
+    },
+    "credits": {
+      "_notes": [
+        "Stern SAM platform-wide credits counter at fixed NVRAM address 0x0211100C (redundant copy at 0x02111014). Identified by the stimulus-response harness (identify_game_state.py): the byte rises as coins are inserted and drops by exactly 1 when a game starts - a pricing-agnostic signature. Confirmed on mtl_180h, trn_174, avs_170, xmn_150."
+      ],
+      "label": "Credits",
+      "start": "0x0211100C",
+      "encoding": "int",
+      "length": 1
+    }
   },
   "high_scores": [
     {

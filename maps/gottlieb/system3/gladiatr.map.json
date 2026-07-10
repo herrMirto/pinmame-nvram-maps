@@ -4,7 +4,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "copyright": [
       "Copyright (C) 2026 by Leprinco <leprinco@yahoo.fr>",
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>"
@@ -14,6 +14,70 @@
     "roms": [
       "gladiatr"
     ]
+  },
+  "game_state": {
+    "player_count": {
+      "_notes": "set to 0 when game over",
+      "label": "Player Count",
+      "short_label": "Players",
+      "start": "0x201",
+      "encoding": "int"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x001"
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x006"
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x00B"
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "length": 5,
+        "start": "0x010"
+      }
+    ],
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x201",
+      "encoding": "bool",
+      "invert": true
+    },
+    "credits": {
+      "_notes": [
+        "Inherited from andretti.map.json (same live-score layout, offset 1); validated: gladiatr reads 0 at this offset."
+      ],
+      "label": "Credits",
+      "start": "0x490",
+      "encoding": "bcd"
+    },
+    "current_player": {
+      "_notes": "0-3; bit 7 (0x80) sometimes set?",
+      "label": "Current Player",
+      "short_label": "P#",
+      "start": "0x200",
+      "encoding": "int",
+      "mask": "0x0F",
+      "offset": 1
+    },
+    "current_ball": {
+      "_notes": "set to 0 when game over",
+      "label": "Ball",
+      "start": "0x15",
+      "encoding": "bcd"
+    }
   },
   "high_scores": [
     {

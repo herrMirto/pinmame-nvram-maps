@@ -9,7 +9,7 @@
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "copyright": [
       "Copyright (C) 2024 by Francis De Brabandere <francisdb@gmail.com>",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -21,11 +21,17 @@
     ]
   },
   "game_state": {
-    "credits": {
-      "label": "Credits",
-      "start": 1752,
-      "length": 1,
-      "encoding": "bcd"
+    "player_count": {
+      "_notes": [
+        "Inherited from generic.map.json (same live-score layout, offset 56); validated: gmine_l2 reads 0 at this offset."
+      ],
+      "label": "Players",
+      "start": "0xCD",
+      "encoding": "int",
+      "offset": 1,
+      "special_values": {
+        "256": "n/a"
+      }
     },
     "scores": [
       {
@@ -64,7 +70,33 @@
         "encoding": "bcd",
         "length": 2
       }
-    ]
+    ],
+    "game_over": {
+      "_notes": [
+        "Inherited from generic.map.json (same live-score layout, offset 56); validated: gmine_l2 reads 0 at this offset."
+      ],
+      "label": "Game Over",
+      "start": "0xCA",
+      "encoding": "bool"
+    },
+    "credits": {
+      "label": "Credits",
+      "start": 1752,
+      "length": 1,
+      "encoding": "bcd"
+    },
+    "current_ball": {
+      "_notes": [
+        "Inherited from generic.map.json (same live-score layout, offset 56); validated: gmine_l2 reads 0 at this offset."
+      ],
+      "label": "Ball",
+      "start": "0x58",
+      "encoding": "bcd",
+      "mask": "0x0F",
+      "special_values": {
+        "0": "n/a"
+      }
+    }
   },
   "high_scores": [
     {

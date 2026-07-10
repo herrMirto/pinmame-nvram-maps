@@ -7,7 +7,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2022 https://github.com/horseyhorsey",
       "Copyright (C) 2025 by Tom Collins <tom@scorbit.io>"
@@ -409,8 +409,8 @@
         "start": "0x78A",
         "encoding": "enum",
         "values": [
-          "Standard Match (awards 10% replays)",
-          "Match off"
+          "ON",
+          "OFF"
         ]
       },
       "27": {

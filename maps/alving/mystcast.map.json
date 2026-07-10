@@ -18,6 +18,55 @@
       "mystcast"
     ]
   },
+  "game_state": {
+    "scores": [
+      {
+        "label": "Player 1",
+        "start": "0x11D4",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 2",
+        "start": "0x11DA",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 3",
+        "start": "0x11E0",
+        "encoding": "bcd",
+        "length": 6
+      },
+      {
+        "label": "Player 4",
+        "start": "0x11E6",
+        "encoding": "bcd",
+        "length": 6
+      }
+    ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x1BEC",
+      "encoding": "int"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "start": "0x1F54",
+      "encoding": "int",
+      "offset": 1
+    },
+    "current_ball": {
+      "label": "Current Ball",
+      "start": "0x1F53",
+      "encoding": "int"
+    },
+    "game_over": {
+      "label": "Game Over",
+      "start": "0x0036",
+      "encoding": "bool"
+    }
+  },
   "high_scores": [
     {
       "label": "High Score #1",
