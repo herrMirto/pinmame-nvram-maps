@@ -11,7 +11,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 6,
+    "version": 9,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
       "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
@@ -35,24 +35,78 @@
         ]
       }
     ],
+    "final_scores_order": "most_recent_first",
     "final_scores": [
       {
-        "label": "Final Score",
+        "label": "Recent Game 1 (newest)",
         "_notes": [
-          "Recent-games ring buffer in DRAM: slot 1 holds the most recently COMPLETED game's final score. At game over the finished game is pushed here and older games shift down to 0x2066/0x206E/0x2076. Even-offset big-endian x10, same layout as the high-score table. Verified on bbb109: a 9,355,020 game read back exactly here. This is the final score at game over, NOT the live in-play score (that lives in higher CPU work RAM)."
+          "Recent-games buffer in battery DRAM (.nv file offset 0x205E), newest completed entry first. At game over the machine pushes ONE entry PER PLAYER, last player first: after a real 2-player game (P1 10,241,410 / P2 22,878,190) entry 1 held 22,878,190 (P2) and entry 2 held 10,241,410 (P1). Combined with game_state.player_count N, player i is entry N-i+1 (final_scores_order=most_recent_first). Even-offset big-endian x10, same layout as the high-score table. Also verified with 1-player games 9,355,020 and 110,318,580. Aborted games (slam tilt) and zero-score synthetic games are NOT pushed. This is the final score at game over, NOT the live in-play score (that lives in higher CPU work RAM)."
         ],
         "encoding": "int",
         "endian": "big",
         "scale": 10,
-        "length": 4,
         "offsets": [
           "0x3000205E",
           "0x30002060",
           "0x30002062",
           "0x30002064"
         ]
+      },
+      {
+        "label": "Recent Game 2",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30002066",
+          "0x30002068",
+          "0x3000206A",
+          "0x3000206C"
+        ]
+      },
+      {
+        "label": "Recent Game 3",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x3000206E",
+          "0x30002070",
+          "0x30002072",
+          "0x30002074"
+        ]
+      },
+      {
+        "label": "Recent Game 4 (oldest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30002076",
+          "0x30002078",
+          "0x3000207A",
+          "0x3000207C"
+        ]
       }
     ],
+    "player_count": {
+      "label": "Player Count",
+      "start": "0x000620EA",
+      "encoding": "int",
+      "length": 1,
+      "_notes": [
+        "Volatile work RAM, found via headless libpinmame triangulation (1-player vs 2-player starts, 98% snapshot consistency): 0 in attract, increments on each Start press during ball 1, holds the player count for the whole game and until the next game starts. bbb109-specific: the same address reads 0 on bbb108 and Breakshot (bsv103)."
+      ]
+    },
+    "credits": {
+      "label": "Credits",
+      "start": "0x30000010",
+      "encoding": "int",
+      "length": 1,
+      "_notes": [
+        "Battery DRAM, platform-wide: verified against user-reported credit counts on bbb109 (7), bsv103 (5) and pmv112 (4), and observed incrementing on coin insertion in a headless probe. (0x3000139C, previously mapped, is a different counter that only coincidentally matched on bbb/bsv.)"
+      ]
+    },
     "game_over": {
       "_notes": [
         "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."

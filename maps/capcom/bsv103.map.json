@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 2,
+    "version": 5,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
       "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
@@ -20,6 +20,69 @@
     ]
   },
   "game_state": {
+    "final_scores_order": "most_recent_first",
+    "final_scores": [
+      {
+        "label": "Recent Game 1 (newest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001EEA",
+          "0x30001EEC",
+          "0x30001EEE",
+          "0x30001EF0"
+        ],
+        "_notes": [
+          "Recent-games buffer in battery DRAM (.nv file offset 0x1EEA), newest completed entry first; one push per player at game over, last player first. Verified with a real 4-player game (P1 765,350 / P2 396,250 / P3 272,400 / P4 168,090 read back as entries 4..1 exactly), on top of three older real games (3,114,990 / 3,292,410 / 858,390). Same structure as Big Bang Bar but at a title-specific base (bbb109 uses 0x205E). Breakshot has no usable player_count byte anywhere in DRAM (full 512KB triangulated); the plugin infers the player count from the number of entries pushed on top of the session-start baseline."
+        ]
+      },
+      {
+        "label": "Recent Game 2",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001EF2",
+          "0x30001EF4",
+          "0x30001EF6",
+          "0x30001EF8"
+        ]
+      },
+      {
+        "label": "Recent Game 3",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001EFA",
+          "0x30001EFC",
+          "0x30001EFE",
+          "0x30001F00"
+        ]
+      },
+      {
+        "label": "Recent Game 4 (oldest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001F02",
+          "0x30001F04",
+          "0x30001F06",
+          "0x30001F08"
+        ]
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x30000010",
+      "encoding": "int",
+      "length": 1,
+      "_notes": [
+        "Battery DRAM, platform-wide: verified against user-reported credit counts on bbb109 (7), bsv103 (5) and pmv112 (4), and observed incrementing on coin insertion in a headless probe. (0x3000139C, previously mapped, is a different counter that only coincidentally matched on bbb/bsv.)"
+      ]
+    },
     "game_over": {
       "_notes": [
         "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."

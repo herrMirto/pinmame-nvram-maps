@@ -7,7 +7,7 @@
   ],
   "_fileformat": 0.7,
   "_metadata": {
-    "version": 3,
+    "version": 4,
     "platform": "capcom",
     "roms": [
       "pmv112",
@@ -15,6 +15,69 @@
     ]
   },
   "game_state": {
+    "final_scores_order": "most_recent_first",
+    "final_scores": [
+      {
+        "label": "Recent Game 1 (newest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001EF6",
+          "0x30001EF8",
+          "0x30001EFA",
+          "0x30001EFC"
+        ],
+        "_notes": [
+          "Recent-games buffer in battery DRAM (.nv file offset 0x1EF6), newest completed entry first; one push per player at game over, last player first. Verified with a real 4-player game (P1 62,576,260 / P2 18,396,190 / P3 15,376,900 / P4 17,265,150 read back as entries 4..1 exactly). Title-specific base (bbb109 0x205E, bsv103 0x1EEA). No usable player_count byte is known; the plugin infers the player count from entries pushed on top of the session-start baseline."
+        ]
+      },
+      {
+        "label": "Recent Game 2",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001EFE",
+          "0x30001F00",
+          "0x30001F02",
+          "0x30001F04"
+        ]
+      },
+      {
+        "label": "Recent Game 3",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001F06",
+          "0x30001F08",
+          "0x30001F0A",
+          "0x30001F0C"
+        ]
+      },
+      {
+        "label": "Recent Game 4 (oldest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001F0E",
+          "0x30001F10",
+          "0x30001F12",
+          "0x30001F14"
+        ]
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x30000010",
+      "encoding": "int",
+      "length": 1,
+      "_notes": [
+        "Battery DRAM, platform-wide: verified against user-reported credit counts on bbb109 (7), bsv103 (5) and pmv112 (4), and observed incrementing on coin insertion in a headless probe. (0x3000139C, previously mapped, is a different counter that only coincidentally matched on bbb/bsv.)"
+      ]
+    },
     "game_over": {
       "_notes": [
         "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."

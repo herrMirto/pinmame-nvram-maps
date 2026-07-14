@@ -8,7 +8,7 @@
   ],
   "_fileformat": 0.8,
   "_metadata": {
-    "version": 1,
+    "version": 2,
     "copyright": [
       "Copyright (C) 2026 by Tom Collins <tom@scorbit.io>",
       "Copyright (C) 2026 by Andre Santana <herrmirto@proton.me>"
@@ -20,6 +20,69 @@
     ]
   },
   "game_state": {
+    "final_scores_order": "most_recent_first",
+    "final_scores": [
+      {
+        "label": "Recent Game 1 (newest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001D3A",
+          "0x30001D3C",
+          "0x30001D3E",
+          "0x30001D40"
+        ],
+        "_notes": [
+          "Recent-games buffer in battery DRAM (.nv file offset 0x1D3A), newest completed entry first; one push per player at game over, last player first. Base located by ROM analysis: the 68000 accessor 'move.l 4(sp),d0; movea.l #$30001D3A,a0; asl.l #3,d0; adda.l d0,a0' appears twice in the program ROM, the identical code shape that holds the real-play-verified bases on bbb109 (0x205E), bsv103 (0x1EEA) and pmv112 (0x1EF6). Structure (8-byte stride, even-offset big-endian x10, player count via session-baseline inference) inherited from those verified titles; awaiting first real game for end-to-end confirmation. Note abv106r allocates a different base than abv105/abv106."
+        ]
+      },
+      {
+        "label": "Recent Game 2",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001D42",
+          "0x30001D44",
+          "0x30001D46",
+          "0x30001D48"
+        ]
+      },
+      {
+        "label": "Recent Game 3",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001D4A",
+          "0x30001D4C",
+          "0x30001D4E",
+          "0x30001D50"
+        ]
+      },
+      {
+        "label": "Recent Game 4 (oldest)",
+        "encoding": "int",
+        "endian": "big",
+        "scale": 10,
+        "offsets": [
+          "0x30001D52",
+          "0x30001D54",
+          "0x30001D56",
+          "0x30001D58"
+        ]
+      }
+    ],
+    "credits": {
+      "label": "Credits",
+      "start": "0x30000010",
+      "encoding": "int",
+      "length": 1,
+      "_notes": [
+        "Battery DRAM, platform-wide offset verified on bbb109/bsv103/pmv112; on abv106 verified headlessly (coin insertion increments, start decrements; 2 coins per credit at default pricing)."
+      ]
+    },
     "game_over": {
       "_notes": [
         "Game-in-progress flag in DRAM (volatile RAM, not in the .nv). Found via libpinmame, verified across Breakshot/Big Bang Bar/Pinball Magic: 0x000012F2 bit 0x40 is SET during a game, CLEAR in attract and at game over. invert=true so the field reads true when the game is over."
