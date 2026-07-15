@@ -1,0 +1,114 @@
+{
+  "_notes": [
+    "Early Taito do Brasil hardware (NVRAM at 0x1000). The RAM layout is the standard Taito layout with the two 128-byte halves swapped: display RAM at 0x1000-0x100F, last game scores at 0x1074, settings/bookkeeping block at 0x10F0-0x10FF.",
+    "Uses the early display layout: current player on digit 0x100D, credits on digit 0x100F.",
+    "Layout verified by instrumenting PinMAME (headless libpinmame) with deterministic games on shock.",
+    "These games do not keep a persistent high-score-to-date: the attract mode alternates the final scores of the last game with a fixed factory number (stored at 0x10F9, e.g. 0x47 for Shock).",
+    "2026-07: Initial map compiled by Andre Santana."
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "taito-old",
+    "roms": [
+      "football",
+      "obaobao",
+      "shock"
+    ]
+  },
+  "game_state": {
+    "_notes": [
+      "`scores` is display memory: during a game it shows the live scores, in attract mode it cycles between the last game's scores, a factory number and blank (0xFF) digits.",
+      "`final_scores` holds the scores of the last completed game; 0xFF bytes mean the player did not take part."
+    ],
+    "credits": {
+      "label": "Credits",
+      "encoding": "bcd",
+      "start": "0x10FF"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "start": "0x1000",
+        "length": 3
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "start": "0x1003",
+        "length": 3
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "start": "0x1006",
+        "length": 3
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "start": "0x1009",
+        "length": 3
+      }
+    ],
+    "final_scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "start": "0x1074",
+        "length": 3
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "start": "0x1077",
+        "length": 3
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "start": "0x107A",
+        "length": 3
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "start": "0x107D",
+        "length": 3
+      }
+    ],
+    "current_ball": {
+      "_notes": "0 in attract mode, 1-5 while a game is in progress (including the match/game over sequence)",
+      "label": "Ball in Play",
+      "encoding": "bcd",
+      "start": "0x100C"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "encoding": "bcd",
+      "start": "0x100D"
+    },
+    "game_over": {
+      "_notes": "GAME OVER lamp (bit 0 of the last byte of the lamp DMA RAM): lit in attract mode, off while a game is in progress",
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x101F",
+      "mask": "0x01"
+    }
+  },
+  "audits": {
+    "Audits": {
+      "01": {
+        "_notes": "keeps counting when credits are spent",
+        "label": "Coin Counter",
+        "encoding": "bcd",
+        "start": "0x10D6"
+      }
+    }
+  }
+}

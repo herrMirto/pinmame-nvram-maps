@@ -1,0 +1,143 @@
+{
+  "_notes": [
+    "Taito do Brasil games (standard hardware, standard display layout).",
+    "Layout verified by instrumenting PinMAME (headless libpinmame) with deterministic games on zarza, voleybal and sharkt; obaoba shares the data layout but uses a different display layout (see taito-early.map.json).",
+    "These games do not keep a persistent high-score-to-date: the attract mode alternates the final scores of the last game with a fixed factory number (stored at 0x4079, e.g. 0x60 for Zarza).",
+    "0x4070-0x407E holds a settings/bookkeeping block whose meaning is not fully decoded (0x4074-0x4076 look like three replay score levels).",
+    "2026-07: Initial map compiled by Andre Santana"
+  ],
+  "_fileformat": 0.8,
+  "_metadata": {
+    "version": 1,
+    "copyright": [
+      "Copyright (C) 2026 by Andre Santana"
+    ],
+    "license": "GNU Lesser General Public License v3.0",
+    "platform": "taito",
+    "roms": [
+      "cavnegr1",
+      "cavnegr2",
+      "cavnegro",
+      "cosmic",
+      "drakor",
+      "fireact",
+      "fireactd",
+      "gemini",
+      "gemini1",
+      "gork",
+      "hawkman",
+      "hawkman1",
+      "ladylukt",
+      "lunelle",
+      "meteort",
+      "mrblack",
+      "mrblack1",
+      "polar",
+      "rally",
+      "sharkt",
+      "snake",
+      "sshuttl1",
+      "sshuttle",
+      "stest",
+      "sureshot",
+      "titan",
+      "titan1",
+      "vegast",
+      "voleybal",
+      "vortex",
+      "zarza",
+      "zarza1"
+    ]
+  },
+  "game_state": {
+    "_notes": [
+      "`scores` is display memory: during a game it shows the live scores, in attract mode it cycles between the last game's scores, a factory number and blank (0xFF) digits.",
+      "`final_scores` holds the scores of the last completed game; 0xFF bytes mean the player did not take part."
+    ],
+    "credits": {
+      "label": "Credits",
+      "encoding": "bcd",
+      "start": "0x407F"
+    },
+    "scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "start": "0x4080",
+        "length": 3
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "start": "0x4083",
+        "length": 3
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "start": "0x4086",
+        "length": 3
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "start": "0x4089",
+        "length": 3
+      }
+    ],
+    "final_scores": [
+      {
+        "label": "Player 1",
+        "encoding": "bcd",
+        "start": "0x40F4",
+        "length": 3
+      },
+      {
+        "label": "Player 2",
+        "encoding": "bcd",
+        "start": "0x40F7",
+        "length": 3
+      },
+      {
+        "label": "Player 3",
+        "encoding": "bcd",
+        "start": "0x40FA",
+        "length": 3
+      },
+      {
+        "label": "Player 4",
+        "encoding": "bcd",
+        "start": "0x40FD",
+        "length": 3
+      }
+    ],
+    "current_ball": {
+      "_notes": "0 in attract mode, 1-5 while a game is in progress (including the match/game over sequence)",
+      "label": "Ball in Play",
+      "encoding": "bcd",
+      "start": "0x408C"
+    },
+    "current_player": {
+      "label": "Current Player",
+      "encoding": "bcd",
+      "start": "0x408F"
+    },
+    "game_over": {
+      "_notes": "GAME OVER lamp (bit 0 of the last byte of the lamp DMA RAM): lit in attract mode, off while a game is in progress",
+      "label": "Game Over",
+      "encoding": "bool",
+      "start": "0x409F",
+      "mask": "0x01"
+    }
+  },
+  "audits": {
+    "Audits": {
+      "01": {
+        "_notes": "keeps counting when credits are spent",
+        "label": "Coin Counter",
+        "encoding": "bcd",
+        "start": "0x4056"
+      }
+    }
+  }
+}
